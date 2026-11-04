@@ -23,7 +23,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 monitor.py
+        run: python3 monitor.py ${{ github.event_name == 'workflow_dispatch' && '--test' || '' }}
 
       - name: Salvar estado
         run: |
